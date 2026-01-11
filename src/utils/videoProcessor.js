@@ -1,31 +1,3 @@
-// export const startVideoProcessing = async (video, io) => {
-//   video.processing.status = "processing";
-//   await video.save();
-//   let progress = 0;
-//   const interval = setInterval(async () => {
-//     progress += 20;
-//     video.processing.progress = progress;
-//     await video.save();
-//     io.to(video.ownerId.toString()).emit("video-progress", {
-//       videoId: video._id,
-//       progress,
-//       status: "processing",
-//     });
-//     if (progress >= 100) {
-//       clearInterval(interval);
-//       video.processing.status = "safe"; 
-//       video.processing.sensitivityResult = "safe";
-//       video.processing.processedAt = new Date();
-//       await video.save();
-
-//       io.to(video.ownerId.toString()).emit("video-complete", {
-//         videoId: video._id,
-//         status: "safe",
-//       });
-//     }
-//   }, 1000);
-// };
-
 const mockSensitivityAnalysis = (video) => {
   const text = `${video.title} ${video.description || ""}`.toLowerCase();
   const flaggedKeywords = ["violence", "blood", "abuse"];
